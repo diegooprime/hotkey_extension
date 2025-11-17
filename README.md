@@ -6,7 +6,9 @@ Configure the shortcuts, works on every site. I built this for the efficiency ga
 
 Fully configurable via the extension's options page.
 
-<video width="640" controls src="assets/demo.mp4?raw=1"></video>
+<a href="assets/demo.mp4?raw=1">
+  <img src="assets/demo.gif" alt="Watch demo" width="640" />
+</a>
 
 ## Contributing
 
