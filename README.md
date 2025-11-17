@@ -6,6 +6,11 @@ Configure the shortcuts, works on every site. I built this for the efficiency ga
 
 Fully configurable via the extension's options page.
 
+<video width="640" controls>
+  <source src="assets/demo.mp4" type="video/mp4" />
+  Your browser doesn't support embedded videos.
+</video>
+
 ## Contributing
 
 Feel free to fork, improve or add your own functionality.
