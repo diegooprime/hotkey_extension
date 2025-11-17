@@ -6,7 +6,7 @@ Configure the shortcuts, works on every site. I built this for the efficiency ga
 
 Fully configurable via the extension's options page.
 
-<a href="assets/demo.mp4?raw=1">
+<a href="https://github.com/diegooprime/hotkey_extension/blob/main/assets/demo.mp4" target="_blank" rel="noopener">
   <img src="assets/demo.gif" alt="Watch demo" width="640" />
 </a>
 
