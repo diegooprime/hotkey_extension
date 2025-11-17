@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Hotkey Router · Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Hotkey Router</h1>
+        <p>Command is implied. One mapping per line.</p>
+        <p class="hint">
+          <code>map newChat shift+o</code>
+          <code>map voiceMode k</code>
+        </p>
+      </header>
+      <section class="config-editor">
+        <label for="config-editor" class="config-label">Mappings</label>
+        <textarea
+          id="config-editor"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          rows="14"
+          placeholder="map newChat shift+u"
+        ></textarea>
+        <p class="hint">
+          Syntax: <code>map action combo</code>. Valid combos: <code>letter</code> or <code>shift+letter</code>.
+        </p>
+      </section>
+      <section id="status" class="status" role="status" aria-live="polite"></section>
+      <div class="footer">
+        <button id="reset-shortcuts" type="button">Reset</button>
+      </div>
+      <section class="actions-reference">
+        <h2>Actions</h2>
+        <ul id="action-list" class="action-list"></ul>
+      </section>
+    </main>
+    <script src="../shared/constants.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
