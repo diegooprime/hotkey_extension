@@ -1,19 +1,21 @@
 # Hotkey Router
 
-Chrome extension that lets me set unified hotkeys across ChatGPT, Claude, Grok, Perplexity, and t3chat.
+Chrome extension for unified hotkeys across ChatGPT, Claude, Grok, Perplexity, and t3chat.
 
-Configure the shortcuts, works on every site. I built this for the efficiency gains.
+I built this for the efficiency gains - same shortcuts everywhere, muscle memory transfers.
 
-Fully configurable via the extension's options page.
+## Demo
 
 <a href="https://x.com/diegooprime/status/1990556977857249372" target="_blank" rel="noopener">
   <img src="assets/demo.gif" alt="Watch demo" width="640" />
 </a>
 
-## Contributing
+## How it works
 
-Feel free to fork, improve or add your own functionality.
+- Set global shortcuts once, they work on every supported site
+- Configure everything via the extension's options page
+- Shortcuts: toggle sidebar, new chat, copy last response, copy conversation, search
 
 ## License
 
-MIT – do whatever you want with it.
+MIT - do whatever you want with it.
