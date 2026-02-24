@@ -625,24 +625,36 @@
   };
 
   const monitorUrlChanges = () => {
-    const observer = new MutationObserver(() => {
+    // Catch back/forward navigation
+    window.addEventListener("popstate", () => {
       if (location.href !== lastUrl) {
         lastUrl = location.href;
         refreshSiteProfile();
       }
     });
 
-    observer.observe(document, {
-      subtree: true,
-      childList: true
-    });
-
-    setInterval(() => {
+    // Catch hashchange
+    window.addEventListener("hashchange", () => {
       if (location.href !== lastUrl) {
         lastUrl = location.href;
         refreshSiteProfile();
       }
-    }, 1500);
+    });
+
+    // Patch pushState/replaceState for SPA navigation
+    const patchHistoryMethod = (method) => {
+      const original = history[method];
+      history[method] = function (...args) {
+        const result = original.apply(this, args);
+        if (location.href !== lastUrl) {
+          lastUrl = location.href;
+          refreshSiteProfile();
+        }
+        return result;
+      };
+    };
+    patchHistoryMethod("pushState");
+    patchHistoryMethod("replaceState");
   };
 
   const isLetter = (value) => /^[a-z]$/i.test(value);
@@ -738,13 +750,10 @@
 
   const shouldIgnoreTarget = (target) => {
     if (!target) return false;
-    if (target.isContentEditable) return false; // we still want to intercept.
-    const tag = target.tagName ? target.tagName.toLowerCase() : "";
-    if (!tag) return false;
-    if (tag === "input" || tag === "textarea") {
-      return target.readOnly && !target.dataset?.forceHotkeys;
-    }
-    return false;
+    // All shortcuts require Cmd/Meta so they won't conflict with typing.
+    // Only ignore select/option elements where Cmd+key has native behavior.
+    const tag = (target.tagName || "").toLowerCase();
+    return tag === "select";
   };
 
   const performAction = (actionId) => {

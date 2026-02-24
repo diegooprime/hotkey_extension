@@ -228,12 +228,28 @@
 
   const renderActionList = () => {
     if (!actionListEl) return;
-    actionListEl.innerHTML = "";
+    actionListEl.textContent = "";
     ACTION_IDS.forEach((actionId) => {
       const li = document.createElement("li");
       const meta = ACTION_METADATA[actionId];
       const defaultText = formatShortcut(DEFAULT_SHORTCUTS[actionId]);
-      li.innerHTML = `<code>${actionId}</code> — ${meta.description} <span class="default-hint">(default: ${defaultText.toUpperCase()})</span>`;
+
+      const code = document.createElement("code");
+      code.textContent = actionId;
+      li.appendChild(code);
+
+      li.appendChild(document.createTextNode(` \u2014 ${meta.description} `));
+
+      const hint = document.createElement("span");
+      hint.className = "default-hint";
+
+      const kbd = document.createElement("kbd");
+      kbd.textContent = `\u2318${defaultText.toUpperCase()}`;
+      hint.appendChild(document.createTextNode("(default: "));
+      hint.appendChild(kbd);
+      hint.appendChild(document.createTextNode(")"));
+
+      li.appendChild(hint);
       actionListEl.appendChild(li);
     });
   };
